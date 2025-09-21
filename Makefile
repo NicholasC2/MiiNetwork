@@ -38,6 +38,7 @@ DATA		:=	data
 INCLUDES	:=	include
 GRAPHICS	:=	gfx
 GFXBUILD	:=	$(BUILD)
+AZAHAR      :=  "C:\Program Files\Azahar\azahar.exe"
 #ROMFS		:=	romfs
 #GFXBUILD	:=	$(ROMFS)/gfx
 
@@ -163,6 +164,10 @@ endif
 #---------------------------------------------------------------------------------
 all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+
+run: all
+	@echo Running $(TARGET).3dsx in Azahar...
+	@$(AZAHAR) $(OUTPUT).3dsx
 
 $(BUILD):
 	@mkdir -p $@
